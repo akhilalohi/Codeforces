@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string everyonelovestrees(int n) {
+    if (n == 1 || n == 3) {
+        return "-1";  // Special cases where a solution doesn't exist
+    }
+    
+    if (n % 2 == 0) {
+        // Even case: Repeat "3" (n - 2) times, then add "66" at the end
+        return string(n - 2, '3') + "66";
+    } else {
+        // Odd case: Repeat "3" (n - 5) times, add "363", then "66"
+        return string(n - 5, '3') + "36366";
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    cout << everyonelovestrees(n) << endl;
+    return 0;
+}
