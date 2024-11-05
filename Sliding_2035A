@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int calculate_total_distance(int n, int m, int r, int c) {
+    // Determine the furthest corners
+    vector<pair<int, int>> corners = {{1, 1}, {1, m}, {n, 1}, {n, m}};
+    
+    // Calculate Manhattan distance from (r, c) to each corner
+    int max_distance = 0;
+    for (const auto& corner : corners) {
+        int distance = abs(r - corner.first) + abs(c - corner.second);
+        max_distance = max(max_distance, distance);
+    }
+    
+    return max_distance;
+}
+
+int main() {
+    int t;
+    cin >> t;
+    vector<int> results;
+    results.reserve(t); // reserve space for t results
+    
+    while (t--) {
+        int n, m, r, c;
+        cin >> n >> m >> r >> c;
+        results.push_back(calculate_total_distance(n, m, r, c));
+    }
+
+    // Output all results
+    for (int result : results) {
+        cout << result << endl;
+    }
+
+    return 0;
+}
